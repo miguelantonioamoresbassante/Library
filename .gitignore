@@ -1,9 +1,4 @@
-**/.metadata
 **/.settings
 **/target
 **/.classpath
 **/.project
-**/.atta*
-**/build
-**/*soapui*
-**/~*
