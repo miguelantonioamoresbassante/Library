@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
@@ -15,9 +16,12 @@ import javax.persistence.TemporalType;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="RESERVE")
+@NamedQuery(name = "Reserve.findAll", query = "select o from Reserve o")
+@XmlRootElement
 public class Reserve {
 	
 	@Id
@@ -69,8 +73,6 @@ public class Reserve {
 	}
 	public void setDeliveryDate(Date deliveryDate) {
 		this.deliveryDate = deliveryDate;
-	}
-	
-	
+	}	
 
 }

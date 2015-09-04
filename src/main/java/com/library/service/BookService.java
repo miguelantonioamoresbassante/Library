@@ -11,7 +11,7 @@ import com.library.model.Book;
 @Stateless(name="BookService")
 public class BookService implements BookServiceLocal {
 	
-	@PersistenceContext(unitName="library")
+	@PersistenceContext(unitName="Library")
 	private EntityManager em;
 	
 	private Book book;
@@ -25,7 +25,7 @@ public class BookService implements BookServiceLocal {
 
 	public List<Book> queryAllBook() {
 		
-		return em.createNativeQuery("Book.findAll").getResultList()
+		return em.createNativeQuery("Book.findAll").getResultList();
 	}
 	
 	public void addBook(String title, String author, String description, int quantity){

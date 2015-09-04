@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 
 @Entity
@@ -16,9 +18,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Book {
 	
 	@Id
-	@Column(name="TITLE", nullable=false)
-//	@GeneratedValue(generator = "uuid")
-//	@GenericGenerator(name="uuid", strategy="uuid2")
+	@Column(name="ID_BOOK", nullable=false)
+	@SequenceGenerator(name = "BOOK_GENERATOR", sequenceName = "SEQ_BOOK", allocationSize = 1)
+	@GeneratedValue(strategy = SEQUENCE, generator = "BOOK_GENERATOR")
+	private int id;
+	
+	@Column(name = "TITLE", nullable=false)
 	private String title;
 	
 	@Column(name="AUTHOR")
@@ -30,7 +35,13 @@ public class Book {
 	@Column(name="QUANTITY")
 	private int quantity;
 	
-			
+				
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
@@ -54,8 +65,6 @@ public class Book {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	
+	}	
 
 }
